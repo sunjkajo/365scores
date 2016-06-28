@@ -104,27 +104,21 @@
                 <div class="extra" ng-if="score.GT > 45 && score.Active">Second Half</div>
                 <div class="extra" ng-if="! score.Active">&nbsp;</div>
                 <div class="score" ng-if="score.Active">
-                    <span ng-if="score.Scrs[0] >= 0">{{score.Scrs[0]}}</span>
-                    <span ng-if="score.Scrs[0] < 0">0</span>
-                    -
+                    <span ng-if="score.Scrs[0] >= 0">{{score.Scrs[0] + " - "}}</span>
                     <span ng-if="score.Scrs[1] >= 0">{{score.Scrs[1]}}</span>
-                    <span ng-if="score.Scrs[1] < 0">0</span>
                 </div>
-                <div class="score" ng-if="!score.Active && score.hasOwnProperty('Scrs')">
-                    <span ng-if="score.Scrs[0] >= 0">{{score.Scrs[0]}}</span>
-                    <span ng-if="score.Scrs[0] < 0">0</span>
-                    -
+                <div class="score" ng-if="!score.Active">    <!--&& score.hasOwnProperty('Scrs')-->
+                    <span ng-if="score.Scrs[0] >= 0">{{score.Scrs[0] + " - "}}</span>
                     <span ng-if="score.Scrs[1] >= 0">{{ score.Scrs[1]}}</span>
-                    <span ng-if="score.Scrs[1] < 0">0</span>
                 </div>
                 <!--<div class="score" ng-if="! score.Active && ! score.hasOwnProperty('Scrs')">
                     {{ formatDate(score.STime) | date:'dd/MM hh:mm' }}
                 </div>-->
-                <div class="score" ng-if="! score.Active && ! score.hasOwnProperty('Scrs')">
+                <div class="score" ng-if="! score.Active && score.Scrs[0] < 0 && score.Scrs[1] < 0">
                     {{ formatDate(score.STime) | date:'hh:mm' }}
                 </div>
                 <span class="live" ng-if="score.Active">LIVE - '{{score.GT}}</span>
-                <span class="finished" ng-if="!score.Active &&  score.hasOwnProperty('Scrs')">Finished</span>
+                <span class="finished" ng-if="!score.Active &&  score.Scrs[0] >= 0 && score.Scrs[1] >= 0">Finished</span>
             </div>
             <div class="side2">
                 {{ score.Comps[1].Name }}
