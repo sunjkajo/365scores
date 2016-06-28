@@ -89,12 +89,12 @@
     </div>
     <div class="scores-box" ng-repeat="leagues in scores.Competitions">
         <div class="scores-box-header">
-            <img src="http://imagescache.365scores.com/image/upload/w_140,h_140,c_limit,f_webp,q_90,d_Countries:Round:default.png/Countries/Round/{{ leagues.CID }}" width="30" height="20">
+            <img ng-src="http://imagescache.365scores.com/image/upload/w_140,h_140,c_limit,f_webp,q_90,d_Countries:Round:default.png/Countries/Round/{{ leagues.CID }}" width="30" height="20">
             <h3>{{ leagues.Name }}</h3>
         </div>
         <div class="scores-box-row" ng-repeat="score in scores.Games | filter: {Comp: leagues.ID} | orderBy: 'STime'">
             <div class="logo1">
-                <img src="http://imagescache.365scores.com/image/upload/w_48,h_48,c_limit,f_webp,q_90,d_Competitors:default1.png/Competitors/{{ score.Comps[0].ID}}">
+                <img ng-src="http://imagescache.365scores.com/image/upload/w_48,h_48,c_limit,f_webp,q_90,d_Competitors:default1.png/Competitors/{{ score.Comps[0].ID}}">
             </div>
             <div class="side1">
                 {{ score.Comps[0].Name }}
